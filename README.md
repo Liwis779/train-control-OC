@@ -1,2 +1,2 @@
 # train-control-OC
-Porgramme pour la gestion d'un réseaux férovière sur minecraft à l'aide des modes Railscraft et OpenComputer
+Programme pour la gestion d'un réseaux férovière sur minecraft à l'aide des modes Railscraft et OpenComputer
