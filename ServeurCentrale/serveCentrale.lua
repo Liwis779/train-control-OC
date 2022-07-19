@@ -1,24 +1,16 @@
 local component = require("component")
-local j 		= require("json")
+--local j 		= require("json")
 local event 	= require("event")
 local io 		= require("io")
 local t         = require("term")
+local table     = require("table")
 local term 		= require("term")
 local m = component.modem
 
-local gareTable = 0
+local gareTable = { }
 local port 		= 123
 
 term.clear()
-
-function getFile(name)
-	temp = 0
-	file = io.open(name,"r")
-	temp = file:read()
-	file:close()
-	temp = j.decode(temp)
-	return temp
-end
 
 function ping(port)
 	m.broadcast(port,test)
@@ -28,13 +20,12 @@ function filtre(name,_,add,port,_,nomGare,fonction,...)
 	message={...}
 	if name == "modem_message" then
 		if gareTable[nomGare] == nil then
-			--[[if fonction == "ajoutGare" then
+			if fonction == "test" then
 				gareTable[nomGare]={add=add,train={}}
 				print("Gare ajoute")
 			else
-				print("Gare inconnu")
-			end]]
-			print("Gare inconnu")
+				print("Gare non inconnu")
+			end
 		elseif fonction == "modDest" then
 			if gareTable[nomGare]["train"][message[1]] ~= nil then
 				gareTable[nomGare]["train"][message[1]]=message[2]
@@ -75,8 +66,6 @@ function filtre(name,_,add,port,_,nomGare,fonction,...)
 		end
 	end
 end
-
-gareTable = getFile("/home/gareServe.json")
 
 while true do 
 	m.open(port)
