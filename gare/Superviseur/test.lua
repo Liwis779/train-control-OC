@@ -1,0 +1,11 @@
+--if package.loaded["/common/logger"] ~= nil then package.loaded["/common/logger"] = nil end
+local log = require("/common/logger")
+local utils = require("/common/utils")
+utils.getFile("/home/config/gare.json")
+--os.execute("test2.lua")
+log.init("./home/log.txt")
+log.infoMsg("test info")
+log.debugMsg("test debug")
+log.warnMsg("test warn")
+log.errMsg("test error")
+log.close()
