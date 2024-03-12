@@ -10,7 +10,7 @@
 local io = require("filesystem")
 local str = require("string")
 local os = require("os")
-
+local shell = require("shell")
 logger = {
     isReady = false,
     file = nil,
@@ -18,8 +18,9 @@ logger = {
 }
 
 function logger.init(path)
+    print(shell.getWorkingDirectory())
     if logger.isReady  then return end
-    logger.file,err = io.open(path,'a')
+    logger.file,err = io.open(path,"a")
     if err ~= nil then error("error when open the file") end 
     logger.path = path
     logger.isReady = true

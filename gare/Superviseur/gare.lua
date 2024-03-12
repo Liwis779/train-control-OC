@@ -19,7 +19,6 @@ local m = component.modem
 local gpu = component.gpu
 local serveGareAdd = 0
 
-
 local port 		 = 1
 local direction  = 0
 local action 	 = 0
